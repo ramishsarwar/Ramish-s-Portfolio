@@ -1266,7 +1266,24 @@ footer p{color:var(--muted);font-size:.78rem;}
 
   .hero-left{ grid-area: text; }
   .hero-right{ grid-area: visual; }
-}git status
+}
+@media (max-width: 500px){
+
+  .orbit-wrap{
+    width: 240px;
+    height: 240px;
+  }
+
+  .float{
+    display: block;
+    transform: scale(0.75);
+    backdrop-filter: blur(10px);
+  }
+
+  .float1{ left: 120px; top: 0; }
+  .float2{ right: -10px; bottom: 20px; }
+  .float3{ left: -20px; bottom: 90px; }
+}
 </style>
 </head>
 <body>
