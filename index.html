@@ -437,61 +437,81 @@ section{padding:50px 7%;}
   transition:.3s;
 }
 .skills span:hover{background:rgba(89,255,191,.08);color:var(--green);border-color:rgba(89,255,191,.2);}
-/* ═══ SKILL TABS ═══ */
+.skills-container {
+  display: flex;
+  justify-content: center;   /* horizontal center */
+  align-items: center;
+  gap: 12px;
 
-.skill-tabs{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-bottom:28px;
-  <button class="skill-tab" data-skill="branding">
-  🎯 Branding
-</button>
+  width: 100%;
+  margin: 0 auto;
+
+  flex-wrap: wrap;           /* allows responsiveness */
+  text-align: center;
 }
+.skill-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-.skill-tab{
-  padding:12px 18px;
-  border-radius:40px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.03);
-  color:var(--muted);
-  font-size:.78rem;
-  letter-spacing:.05em;
-  cursor:none;
-  transition:.35s var(--ease);
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
+  color: var(--muted);
+
+  font-size: .78rem;
+  cursor: pointer;
+  transition: .3s ease;
+}
+section {
+  text-align: center;
+}
+.skill-tab:hover {
+  background: #22c55e;
+  color: black;
+  border-color: #22c55e;
+  transform: translateY(-2px);
 }
 
 .skill-tab:hover{
-  border-color:rgba(89,255,191,.25);
   color:var(--green);
+  border-color:rgba(89,255,191,.35);
   transform:translateY(-3px);
 }
 
 .skill-tab.active{
-  background:rgba(89,255,191,.12);
-  border-color:rgba(89,255,191,.25);
-  color:var(--green);
-  box-shadow:0 10px 30px rgba(89,255,191,.08);
+  color:#000;
+  background:var(--green);
+  border-color:var(--green);
+  box-shadow:0 10px 30px rgba(89,255,191,.2);
 }
 
 .skill-content{
   display:none;
-  animation:skillFade .45s var(--ease);
+  padding:26px;
+  margin-top:10px;
+  background:rgba(255,255,255,.02); /* softer than before */
+  border:none; /* ❌ removes double box effect */
+  border-radius:16px;
 }
 
 .skill-content.active{
   display:block;
 }
+.skills span{
+  padding:8px 12px;
+  border-radius:30px;
+  font-size:.75rem;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);
+  color:var(--muted);
+  transition:.2s;
+}
 
-@keyframes skillFade{
-  from{
-    opacity:0;
-    transform:translateY(12px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+.skills span:hover{
+  color:var(--green);
+  border-color:rgba(89,255,191,.3);
 }
 /* ═══ SERVICES ═══ */
 #services{
@@ -1138,67 +1158,86 @@ footer p{color:var(--muted);font-size:.78rem;}
 .project:hover .project-image img{
   transform:scale(1.05);
 }
-@media (max-width:500px){
-
-  .hero{
-    padding-top:160px;
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .hero h1{
-    font-size:3.2rem;
+  .hero-text {
+    order: 1;
   }
 
-  .hero-label{
-    font-size:.58rem;
-    letter-spacing:.18em;
+  .orbit-wrap {
+    order: 2;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .hero {
+    padding-top: 160px;
+    flex-direction: column;
+    text-align: center;
   }
 
-  .btn{
-    width:100%;
-    text-align:center;
+  .hero h1 {
+    font-size: 3.2rem;
   }
 
-  .hero-btns{
-    flex-direction:column;
+  .hero-label {
+    font-size: .58rem;
+    letter-spacing: .18em;
   }
 
-  .orbit-wrap{
-    width:240px;
-    height:240px;
+  .hero-btns {
+    flex-direction: column;
   }
 
-  .center-card{
-    inset:62px;
+  .btn {
+    width: 100%;
+    text-align: center;
   }
 
-  .center-card h2{
-    font-size:2.2rem;
+  .orbit-wrap {
+    width: 240px;
+    height: 240px;
+    margin-top: 20px; /* ensures spacing on small screens */
   }
 
-  .float{
-    display:none;
+  .center-card {
+    inset: 62px;
   }
 
-  .project-header{
-    gap:12px;
+  .center-card h2 {
+    font-size: 2.2rem;
   }
 
-  .project h3{
-    font-size:1.4rem;
+  .float {
+    display: none;
   }
 
-  .contact-top h2{
-    font-size:2.3rem;
+  .project-header {
+    gap: 12px;
+  }
+
+  .project h3 {
+    font-size: 1.4rem;
+  }
+
+  .contact-top h2 {
+    font-size: 2.3rem;
   }
 
   .contact-top,
-  .contact-col{
-    padding-inline:22px;
+  .contact-col {
+    padding-inline: 22px;
   }
 
-  .footer-links{
-    flex-wrap:wrap;
-    justify-content:center;
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 </style>
@@ -1337,25 +1376,15 @@ footer p{color:var(--muted);font-size:.78rem;}
 
   <div class="skill-tabs">
 
-    <button class="skill-tab active" data-skill="design">
-      🎨 Design
-    </button>
+  <div class="tab-indicator"></div>
 
-    <button class="skill-tab" data-skill="frontend">
-      💻 Frontend
-    </button>
+  <button class="skill-tab active" data-skill="design">🎨 Design</button>
+  <button class="skill-tab" data-skill="frontend">💻 Frontend</button>
+  <button class="skill-tab" data-skill="mobile">📱 Mobile</button>
+  <button class="skill-tab" data-skill="tools">🚀 Tools</button>
+  <button class="skill-tab" data-skill="branding">🎯 Branding</button>
 
-    <button class="skill-tab" data-skill="mobile">
-      📱 Mobile
-    </button>
-
-   
-
-    <button class="skill-tab" data-skill="tools">
-      🚀 Tools
-    </button>
-<button class="skill-tab" data-skill="branding">🎯 Branding</button>
-  </div>
+</div>
  
 
   <div class="skill-content active" id="design">
@@ -1961,12 +1990,16 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
 });
 emailjs.init("ZD7KwNBfln2WLzlNl");
 /* ═══ SKILL TABS ═══ */
-
 const skillTabs = document.querySelectorAll('.skill-tab');
 const skillContents = document.querySelectorAll('.skill-content');
+const indicator = document.querySelector('.tab-indicator');
+
+function moveIndicator(el){
+  indicator.style.width = el.offsetWidth + "px";
+  indicator.style.left = el.offsetLeft + "px";
+}
 
 skillTabs.forEach(tab => {
-
   tab.addEventListener('click', () => {
 
     const target = tab.dataset.skill;
@@ -1975,21 +2008,14 @@ skillTabs.forEach(tab => {
     skillContents.forEach(c => c.classList.remove('active'));
 
     tab.classList.add('active');
-
     document.getElementById(target).classList.add('active');
-    
 
-  });
-
-});
-const toggles = document.querySelectorAll('.toggle-item');
-
-toggles.forEach(item => {
-  item.addEventListener('mouseenter', () => {
-    toggles.forEach(t => t.classList.remove('active'));
-    item.classList.add('active');
+    moveIndicator(tab);
   });
 });
+
+// initial position
+moveIndicator(document.querySelector('.skill-tab.active'));
 /* ═══ HERO PARALLAX ═══ */
 window.addEventListener('scroll', () => {
   const y = scrollY;
