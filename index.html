@@ -1269,20 +1269,37 @@ footer p{color:var(--muted);font-size:.78rem;}
 }
 @media (max-width: 500px){
 
-  .orbit-wrap{
-    width: 240px;
-    height: 240px;
-  }
-
   .float{
-    display: block;
-    transform: scale(0.75);
+    transform: scale(0.65);
+    padding: 6px 8px;
+    border-radius: 8px;
     backdrop-filter: blur(10px);
   }
 
-  .float1{ left: 120px; top: 0; }
-  .float2{ right: -10px; bottom: 20px; }
-  .float3{ left: -20px; bottom: 90px; }
+  .float small{
+    font-size: 0.5rem;
+    letter-spacing: 0.12em;
+  }
+
+  .float strong{
+    font-size: 0.8rem;
+  }
+
+  /* reposition so they don’t overlap */
+  .float1{
+    left: 110px;
+    top: 0;
+  }
+
+  .float2{
+    right: -5px;
+    bottom: 25px;
+  }
+
+  .float3{
+    left: -10px;
+    bottom: 95px;
+  }
 }
 </style>
 </head>
