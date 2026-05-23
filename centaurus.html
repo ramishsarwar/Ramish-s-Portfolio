@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centaurus Case Study</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:#050510;
+  color:#fff;
+  font-family:Inter;
+  padding:80px 12%;
+  overflow-x:hidden;
+}
+
+/* BACKGROUND GLOW */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(89,255,191,.08), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(165,139,255,.08), transparent 40%);
+  z-index:-1;
+}
+
+a{
+  color:#59ffbf;
+  text-decoration:none;
+  font-size:.9rem;
+  opacity:.8;
+}
+a:hover{opacity:1}
+
+/* ANIMATION */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all .8s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* HERO */
+h1{
+  font-family:'Cormorant Garamond';
+  font-size:4rem;
+  font-weight:300;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  color:rgba(255,255,255,.6);
+  margin-bottom:50px;
+}
+
+/* SECTION CARDS */
+.section{
+  margin-top:60px;
+}
+
+h2{
+  font-family:'Cormorant Garamond';
+  font-weight:300;
+  color:#59ffbf;
+  margin-bottom:20px;
+  font-size:2rem;
+}
+
+/* CARDS */
+.card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  padding:28px;
+  border-radius:18px;
+  margin-bottom:20px;
+  transition:.4s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(89,255,191,.3);
+}
+
+/* IMAGES GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:18px;
+}
+
+img{
+  width:100%;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.1);
+  transition:.4s;
+  cursor:pointer;
+}
+
+img:hover{
+  transform:scale(1.03);
+}
+
+/* BUTTON */
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:12px 24px;
+  border:1px solid rgba(89,255,191,.3);
+  border-radius:40px;
+  color:#59ffbf;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:#59ffbf;
+  color:#000;
+}
+.back-btn{
+  position:fixed;
+  top:28px;
+  
+
+  padding:8px 14px;
+  font-size:.85rem;
+
+  color:#59ffbf;
+  text-decoration:none;
+
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:30px;
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  transition:.3s ease;
+  z-index:9999;
+}
+
+/* hover matches your theme */
+.back-btn:hover{
+  background:#59ffbf;
+  color:#000;
+  border-color:#59ffbf;
+  transform:translateX(-6px);
+  box-shadow:0 10px 30px rgba(89,255,191,.15);
+}
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="back-btn">← Back to Portfolio</a>
+
+<h1 class="reveal">Centaurus Mall Navigation</h1>
+<p class="subtitle reveal">UI/UX Case Study — Smart Indoor Navigation System</p>
+
+<div class="section reveal">
+<h2>Problem</h2>
+<div class="card">
+Large malls lack proper navigation systems, making it hard for users to locate stores quickly.
+</div>
+</div>
+
+<div class="section reveal">
+<h2>Solution</h2>
+<div class="card">
+Designed a structured indoor navigation experience with categories, maps, and search-based discovery.
+</div>
+</div>
+
+<div class="section reveal">
+<h2>UI Screens</h2>
+
+<div class="grid">
+<img src="centaurus/1.png">
+<img src="centaurus/2.png">
+<img src="centaurus/3.png">
+</div>
+</div>
+
+<div class="section reveal">
+<h2>Prototype</h2>
+<a class="btn" target="_blank"
+href="https://www.figma.com/proto/1FhARt2vftaFN15lRrMXim/Centaurus-Mall">
+Open Figma Prototype
+</a>
+</div>
+
+<script>
+/* scroll reveal */
+const els = document.querySelectorAll('.reveal');
+
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('show');
+  });
+},{threshold:0.1});
+
+els.forEach(el=>obs.observe(el));
+</script>
+
+</body>
+
+</html>
